@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Exporter | Data Workspace</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="topbar">
+        <a class="brand" href="/">
+            <span class="brand-icon">A</span>
+            <span>API<span class="brand-light">Exporter</span></span>
+        </a>
+        <span class="status"><span class="status-dot"></span> Local workspace</span>
+    </header>
+
+    <main class="container">
+        <section class="intro">
+            <p class="eyebrow">YOUR DATA WORKSPACE</p>
+            <h1>API Data <span>Exporter.</span></h1>
+            <p class="subtitle">Fetch, inspect, and export API data in seconds.</p>
+        </section>
+
+        <section class="panel">
+            <div class="panel-heading">
+                <div>
+                    <h2>Connect to an API</h2>
+                    <p>Enter a public API endpoint to get started.</p>
+                </div>
+                <span class="method">GET REQUEST</span>
+            </div>
+
+            <form id="api-form">
+                <label for="api-url">API endpoint URL</label>
+                <div class="url-row">
+                    <span class="get-label">GET</span>
+                    <input
+                        id="api-url"
+                        type="url"
+                        placeholder="https://jsonplaceholder.typicode.com/users"
+                        required
+                    >
+                    <button type="submit" id="fetch-btn">Fetch data ↗</button>
+                </div>
+            </form>
+
+            <button type="button" class="sample-link" id="sample-btn">
+                Try a sample API
+            </button>
+        </section>
+
+        <section class="stats">
+            <article class="stat-card">
+                <span>RECORDS FOUND</span>
+                <strong id="record-count">—</strong>
+            </article>
+            <article class="stat-card">
+                <span>DATA FORMAT</span>
+                <strong id="data-format">JSON</strong>
+            </article>
+            <article class="stat-card">
+                <span>EXPORT STATUS</span>
+                <strong id="export-status">Not exported</strong>
+            </article>
+        </section>
+
+        <section class="panel preview-panel">
+            <div class="panel-heading preview-heading">
+                <div>
+                    <h2>Data preview</h2>
+                    <p id="preview-message"><b>Your fetched records will appear here</b></p>
+                </div>
+                <div class="export-actions">
+                    <button type="button" class="secondary-btn" id="json-btn" disabled>
+                        ↓ JSON
+                    </button>
+                    <button type="button" class="primary-btn" id="csv-btn" disabled>
+                        ↓ CSV
+                    </button>
+                </div>
+            </div>
+
+            <div id="message" class="message" role="status" aria-live="polite"></div>
+
+            <div class="table-wrap">
+                <table>
+                    <thead id="table-head">
+                        <tr><th>STATUS</th><th>DETAILS</th></tr>
+                    </thead>
+                    <tbody id="table-body">
+                        <tr>
+                            <td colspan="2" class="empty-state">
+                                <span class="empty-icon">⌘</span>
+                                <strong>No data yet</strong>
+                                <p>Connect to an API to preview its response.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <footer>API Exporter · Built for simple, reliable data exports.</footer>
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
+
